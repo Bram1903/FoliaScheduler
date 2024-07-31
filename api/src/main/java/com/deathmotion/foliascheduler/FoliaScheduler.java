@@ -1,0 +1,124 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2024 Bram
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+package com.deathmotion.foliascheduler;
+
+import org.bukkit.Bukkit;
+import org.bukkit.event.Event;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
+
+public class FoliaScheduler {
+    private static final boolean isFolia;
+    private static Class<? extends Event> regionizedServerInitEventClass;
+
+    private static final AsyncScheduler asyncScheduler;
+    private static final EntityScheduler entityScheduler;
+    private static final GlobalRegionScheduler globalRegionScheduler;
+    private static final RegionScheduler regionScheduler;
+
+    static {
+        boolean folia;
+        try {
+            Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
+            folia = true;
+
+            // Thanks for this code ViaVersion
+            // The class is only part of the Folia API, so we need to use reflections to get it
+            regionizedServerInitEventClass = (Class<? extends Event>) Class.forName("io.papermc.paper.threadedregions.RegionizedServerInitEvent");
+        } catch (ClassNotFoundException e) {
+            folia = false;
+        }
+
+        isFolia = folia;
+
+        asyncScheduler = new AsyncScheduler();
+        entityScheduler = new EntityScheduler();
+        globalRegionScheduler = new GlobalRegionScheduler();
+        regionScheduler = new RegionScheduler();
+    }
+
+    /**
+     * @return Whether the server is running Folia
+     */
+    public static boolean isFolia() {
+        return isFolia;
+    }
+
+    /**
+     * Returns the async scheduler.
+     *
+     * @return async scheduler instance of {@link AsyncScheduler}
+     */
+    public static AsyncScheduler getAsyncScheduler() {
+        return asyncScheduler;
+    }
+
+    /**
+     * Returns the entity scheduler.
+     *
+     * @return entity scheduler instance of {@link EntityScheduler}
+     */
+    public static EntityScheduler getEntityScheduler() {
+        return entityScheduler;
+    }
+
+    /**
+     * Returns the global region scheduler.
+     *
+     * @return global region scheduler instance of {@link GlobalRegionScheduler}
+     */
+    public static GlobalRegionScheduler getGlobalRegionScheduler() {
+        return globalRegionScheduler;
+    }
+
+    /**
+     * Returns the region scheduler.
+     *
+     * @return region scheduler instance of {@link RegionScheduler}
+     */
+    public static RegionScheduler getRegionScheduler() {
+        return regionScheduler;
+    }
+
+    /**
+     * Run a task after the server has finished initializing.
+     * Undefined behavior if called after the server has finished initializing.
+     * <p>
+     * We still need to use reflections to get the server init event class, as this is only part of the Folia API.
+     *
+     * @param plugin Your plugin or PacketEvents
+     * @param run    The task to run
+     */
+    public static void runTaskOnInit(Plugin plugin, Runnable run) {
+        if (!isFolia) {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, run);
+            return;
+        }
+
+        Bukkit.getServer().getPluginManager().registerEvent(regionizedServerInitEventClass, new Listener() {
+        }, EventPriority.HIGHEST, (listener, event) -> run.run(), plugin);
+    }
+}

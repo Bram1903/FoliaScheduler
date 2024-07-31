@@ -1,0 +1,11 @@
+[versions]
+jetbrains-annotations = "24.0.0"
+paper = "1.21-R0.1-SNAPSHOT"
+run-paper = "2.3.0"
+
+[libraries]
+jetbrains-annotations = { group = "org.jetbrains", name = "annotations", version.ref = "jetbrains-annotations" }
+paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper" }
+
+[plugins]
+run-paper = { id = "xyz.jpenilla.run-paper", version.ref = "run-paper" }

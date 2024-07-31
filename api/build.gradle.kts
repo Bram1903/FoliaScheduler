@@ -23,7 +23,7 @@ tasks {
     }
 
     generateVersionsFile {
-        packageName = "com.deathmotion.foliascheduler.utils"
+        packageName = "com.deathmotion.foliascheduler.internal"
     }
 
     shadowJar {

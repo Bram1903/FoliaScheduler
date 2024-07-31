@@ -24,6 +24,11 @@ tasks {
         archiveFileName = "FoliaSchedulerTestPlugin-${rootProject.ext["versionNoHash"]}.jar"
         archiveClassifier = null
 
+        relocate(
+            "com.deathmotion.foliascheduler",
+            "com.deathmotion.testfoliascheduler.shaded"
+        )
+
         mergeServiceFiles()
     }
 

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.deathmotion.foliascheduler.utils;
+package com.deathmotion.foliascheduler.internal;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

@@ -24,6 +24,7 @@
 
 package com.deathmotion.foliascheduler;
 
+import com.deathmotion.foliascheduler.internal.checks.RelocateCheck;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
@@ -40,6 +41,8 @@ public class FoliaScheduler {
     private static final RegionScheduler regionScheduler;
 
     static {
+        new RelocateCheck();
+
         boolean folia;
         try {
             Class.forName("io.papermc.paper.threadedregions.RegionizedServer");

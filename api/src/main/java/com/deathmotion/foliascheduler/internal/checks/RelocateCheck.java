@@ -29,12 +29,37 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
+/**
+ * The {@code RelocateCheck} class ensures that the package of the class has been relocated
+ * from its original package.
+ * This is essential to prevent conflicts with other plugins that may use this library as well.
+ * <p>
+ * When the class is loaded, a static block invokes the {@link #check()} method to perform
+ * this validation.
+ * The package name is compared against an expected original package name
+ * stored in a resource file.
+ * <p>
+ * If the package has not been relocated, an {@link IllegalStateException} is thrown with
+ * instructions to relocate the package.
+ * </p>
+ * <p>
+ * The original package name is read from the file {@code /original_package_name.txt}, which
+ * should be present in the resources directory.
+ * </p>
+ */
 public class RelocateCheck {
 
     static {
         check();
     }
 
+    /**
+     * Checks if the current package of the class matches the original package name.
+     * If they are the same, it throws an {@link IllegalStateException} to enforce
+     * package relocation.
+     *
+     * @throws IllegalStateException if the current package has not been relocated
+     */
     private static void check() {
         String currentPackage = RelocateCheck.class.getPackage().getName();
         String originalPackage = getOriginalPackageName();
@@ -44,6 +69,13 @@ public class RelocateCheck {
         }
     }
 
+    /**
+     * Retrieves the original package name from the {@code /original_package_name.txt} file
+     * in the classpath.
+     *
+     * @return the original package name as a {@code String}
+     * @throws RuntimeException if the file cannot be read or is empty
+     */
     private static String getOriginalPackageName() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(
                 Objects.requireNonNull(RelocateCheck.class.getResourceAsStream("/original_package_name.txt"))))) {

@@ -22,8 +22,9 @@
  * SOFTWARE.
  */
 
-package com.deathmotion.foliascheduler;
+package com.deathmotion.foliascheduler.internal.schedulers;
 
+import com.deathmotion.foliascheduler.FoliaScheduler;
 import com.deathmotion.foliascheduler.utils.TaskWrapper;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
@@ -40,7 +41,7 @@ import java.util.function.Consumer;
 public class EntityScheduler {
     private BukkitScheduler bukkitScheduler;
 
-    protected EntityScheduler() {
+    public EntityScheduler() {
         if (!FoliaScheduler.isFolia()) {
             bukkitScheduler = Bukkit.getScheduler();
         }

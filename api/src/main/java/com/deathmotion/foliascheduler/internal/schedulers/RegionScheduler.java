@@ -22,8 +22,9 @@
  * SOFTWARE.
  */
 
-package com.deathmotion.foliascheduler;
+package com.deathmotion.foliascheduler.internal.schedulers;
 
+import com.deathmotion.foliascheduler.FoliaScheduler;
 import com.deathmotion.foliascheduler.utils.TaskWrapper;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -42,7 +43,7 @@ public class RegionScheduler {
     private BukkitScheduler bukkitScheduler;
     private io.papermc.paper.threadedregions.scheduler.RegionScheduler regionScheduler;
 
-    protected RegionScheduler() {
+    public RegionScheduler() {
         if (FoliaScheduler.isFolia()) {
             regionScheduler = Bukkit.getRegionScheduler();
         } else {

@@ -27,6 +27,11 @@ package com.deathmotion.foliascheduler;
 import com.deathmotion.foliascheduler.internal.FSVersion;
 import com.deathmotion.foliascheduler.internal.FSVersions;
 import com.deathmotion.foliascheduler.internal.checks.RelocateCheck;
+import com.deathmotion.foliascheduler.internal.schedulers.AsyncScheduler;
+import com.deathmotion.foliascheduler.internal.schedulers.EntityScheduler;
+import com.deathmotion.foliascheduler.internal.schedulers.GlobalRegionScheduler;
+import com.deathmotion.foliascheduler.internal.schedulers.RegionScheduler;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
@@ -37,9 +42,16 @@ public class FoliaScheduler {
     private static final boolean isFolia;
     private static Class<? extends Event> regionizedServerInitEventClass;
 
+    @Getter
     private static final AsyncScheduler asyncScheduler;
+
+    @Getter
     private static final EntityScheduler entityScheduler;
+
+    @Getter
     private static final GlobalRegionScheduler globalRegionScheduler;
+
+    @Getter
     private static final RegionScheduler regionScheduler;
 
     static {
@@ -78,42 +90,6 @@ public class FoliaScheduler {
 
     public static String getRawVersion() {
         return FSVersions.RAW;
-    }
-
-    /**
-     * Returns the async scheduler.
-     *
-     * @return async scheduler instance of {@link AsyncScheduler}
-     */
-    public static AsyncScheduler getAsyncScheduler() {
-        return asyncScheduler;
-    }
-
-    /**
-     * Returns the entity scheduler.
-     *
-     * @return entity scheduler instance of {@link EntityScheduler}
-     */
-    public static EntityScheduler getEntityScheduler() {
-        return entityScheduler;
-    }
-
-    /**
-     * Returns the global region scheduler.
-     *
-     * @return global region scheduler instance of {@link GlobalRegionScheduler}
-     */
-    public static GlobalRegionScheduler getGlobalRegionScheduler() {
-        return globalRegionScheduler;
-    }
-
-    /**
-     * Returns the region scheduler.
-     *
-     * @return region scheduler instance of {@link RegionScheduler}
-     */
-    public static RegionScheduler getRegionScheduler() {
-        return regionScheduler;
     }
 
     /**

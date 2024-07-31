@@ -7,6 +7,10 @@ plugins {
 
 dependencies {
     compileOnly(libs.paper)
+    compileOnlyApi(libs.jetbrains.annotations)
+    compileOnlyApi(libs.lombok)
+    annotationProcessor(libs.jetbrains.annotations)
+    annotationProcessor(libs.lombok)
 }
 
 tasks {

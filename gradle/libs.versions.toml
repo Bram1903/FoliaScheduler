@@ -1,11 +1,13 @@
 [versions]
-jetbrains-annotations = "24.0.0"
 paper = "1.21-R0.1-SNAPSHOT"
+jetbrains-annotations = "24.0.0"
+lombok = "1.18.30"
 run-paper = "2.3.0"
 
 [libraries]
-jetbrains-annotations = { group = "org.jetbrains", name = "annotations", version.ref = "jetbrains-annotations" }
 paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper" }
+jetbrains-annotations = { group = "org.jetbrains", name = "annotations", version.ref = "jetbrains-annotations" }
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
 
 [plugins]
 run-paper = { id = "xyz.jpenilla.run-paper", version.ref = "run-paper" }

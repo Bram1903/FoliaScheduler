@@ -24,6 +24,8 @@
 
 package com.deathmotion.foliascheduler;
 
+import com.deathmotion.foliascheduler.internal.FSVersion;
+import com.deathmotion.foliascheduler.internal.FSVersions;
 import com.deathmotion.foliascheduler.internal.checks.RelocateCheck;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
@@ -68,6 +70,14 @@ public class FoliaScheduler {
      */
     public static boolean isFolia() {
         return isFolia;
+    }
+
+    public static FSVersion getVersion() {
+        return FSVersions.CURRENT;
+    }
+
+    public static String getRawVersion() {
+        return FSVersions.RAW;
     }
 
     /**

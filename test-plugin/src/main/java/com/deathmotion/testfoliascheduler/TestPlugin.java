@@ -24,6 +24,7 @@
 
 package com.deathmotion.testfoliascheduler;
 
+import com.deathmotion.foliascheduler.FoliaScheduler;
 import com.deathmotion.testfoliascheduler.tests.AsyncTest;
 import com.deathmotion.testfoliascheduler.tests.EntityTest;
 import com.deathmotion.testfoliascheduler.tests.GlobalRegionTest;
@@ -34,6 +35,8 @@ public class TestPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        getLogger().info("Starting the FoliaScheduler test plugin implementing api version " + FoliaScheduler.getRawVersion() + "!");
+
         new AsyncTest(this);
         new EntityTest(this);
         new GlobalRegionTest(this);

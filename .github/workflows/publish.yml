@@ -24,10 +24,10 @@ jobs:
         uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_SIGNING_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          passphrase: ${{ secrets.GPG_PASSPHRASEE }}
 
       - name: List keys
-        run: echo "test" | gpg --clearsign
+        run: gpg -K
 
       - name: Publish package
         run: ./gradlew publishAllPublicationsToCentralPortal

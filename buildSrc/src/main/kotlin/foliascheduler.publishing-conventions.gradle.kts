@@ -44,6 +44,7 @@ signing {
     val signingKeyId = System.getenv("SIGNING_KEY_ID")
     val signingKey = System.getenv("SIGNING_KEY")
     val signingPassword = System.getenv("SIGNING_PASSWORD")
+    useGpgCmd()
     useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
     sign(publishing.publications)
 }

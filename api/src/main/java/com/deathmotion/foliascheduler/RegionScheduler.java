@@ -22,16 +22,14 @@
  * SOFTWARE.
  */
 
-package com.deathmotion.foliascheduler.schedulers;
+package com.deathmotion.foliascheduler;
 
-import com.deathmotion.foliascheduler.FoliaScheduler;
 import com.deathmotion.foliascheduler.utils.TaskWrapper;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
@@ -39,13 +37,12 @@ import java.util.function.Consumer;
 /**
  * Represents a scheduler for executing region tasks
  */
-public class RegionScheduler {
+public final class RegionScheduler {
 
     private BukkitScheduler bukkitScheduler;
     private io.papermc.paper.threadedregions.scheduler.RegionScheduler regionScheduler;
 
-    @ApiStatus.Internal
-    public RegionScheduler() {
+    RegionScheduler() {
         if (FoliaScheduler.isFolia()) {
             regionScheduler = Bukkit.getRegionScheduler();
         } else {

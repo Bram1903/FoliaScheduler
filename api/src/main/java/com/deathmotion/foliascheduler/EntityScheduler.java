@@ -22,15 +22,13 @@
  * SOFTWARE.
  */
 
-package com.deathmotion.foliascheduler.schedulers;
+package com.deathmotion.foliascheduler;
 
-import com.deathmotion.foliascheduler.FoliaScheduler;
 import com.deathmotion.foliascheduler.utils.TaskWrapper;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,11 +37,10 @@ import java.util.function.Consumer;
 /**
  * Represents a scheduler for executing entity tasks.
  */
-public class EntityScheduler {
+public final class EntityScheduler {
     private BukkitScheduler bukkitScheduler;
 
-    @ApiStatus.Internal
-    public EntityScheduler() {
+    EntityScheduler() {
         if (!FoliaScheduler.isFolia()) {
             bukkitScheduler = Bukkit.getScheduler();
         }

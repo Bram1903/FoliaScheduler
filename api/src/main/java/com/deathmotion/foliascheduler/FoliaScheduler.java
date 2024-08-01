@@ -27,32 +27,28 @@ package com.deathmotion.foliascheduler;
 import com.deathmotion.foliascheduler.internal.FSVersion;
 import com.deathmotion.foliascheduler.internal.FSVersions;
 import com.deathmotion.foliascheduler.internal.checks.RelocateCheck;
-import com.deathmotion.foliascheduler.schedulers.AsyncScheduler;
-import com.deathmotion.foliascheduler.schedulers.EntityScheduler;
-import com.deathmotion.foliascheduler.schedulers.GlobalRegionScheduler;
-import com.deathmotion.foliascheduler.schedulers.RegionScheduler;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.ApiStatus;
 
+@ApiStatus.NonExtendable
 public class FoliaScheduler {
     private static final boolean isFolia;
-    private static Class<? extends Event> regionizedServerInitEventClass;
 
     @Getter
     private static final AsyncScheduler asyncScheduler;
-
     @Getter
     private static final EntityScheduler entityScheduler;
-
     @Getter
     private static final GlobalRegionScheduler globalRegionScheduler;
-
     @Getter
     private static final RegionScheduler regionScheduler;
+
+    private static Class<? extends Event> regionizedServerInitEventClass;
 
     static {
         new RelocateCheck();

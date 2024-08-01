@@ -9,7 +9,7 @@ publishing {
     publications {
         create<MavenPublication>("FoliaScheduler") {
             groupId = "com.deathmotion"
-            artifactId = rootProject.name
+            artifactId = "foliascheduler"
             version = rootProject.ext["versionNoHash"] as String
             from(components["java"])
 

@@ -1,6 +1,7 @@
 plugins {
     `java-library`
     `maven-publish`
+    signing
     com.gradleup.nmcp
 }
 
@@ -37,6 +38,10 @@ publishing {
             }
         }
     }
+}
+
+signing {
+    sign(publishing.publications)
 }
 
 nmcp {

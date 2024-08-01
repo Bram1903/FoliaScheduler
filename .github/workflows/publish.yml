@@ -27,7 +27,7 @@ jobs:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: List keys
-        run: gpg -K
+        run: echo "test" | gpg --clearsign
 
       - name: Publish package
         run: ./gradlew publishAllPublicationsToCentralPortal

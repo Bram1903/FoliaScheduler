@@ -25,7 +25,6 @@
 package com.deathmotion.testfoliascheduler;
 
 import com.deathmotion.foliascheduler.FoliaScheduler;
-import com.deathmotion.foliascheduler.schedulers.AsyncScheduler;
 import com.deathmotion.testfoliascheduler.tests.AsyncTest;
 import com.deathmotion.testfoliascheduler.tests.EntityTest;
 import com.deathmotion.testfoliascheduler.tests.GlobalRegionTest;
@@ -43,7 +42,7 @@ public class TestPlugin extends JavaPlugin {
         new GlobalRegionTest(this);
         new RegionTest(this);
 
-        new AsyncScheduler();
+        //new AsyncScheduler();
     }
 
     @Override

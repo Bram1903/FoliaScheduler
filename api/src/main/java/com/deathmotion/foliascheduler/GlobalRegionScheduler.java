@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.deathmotion.foliascheduler.schedulers;
+package com.deathmotion.foliascheduler;
 
 import com.deathmotion.foliascheduler.FoliaScheduler;
 import com.deathmotion.foliascheduler.utils.TaskWrapper;
@@ -43,7 +43,7 @@ public class GlobalRegionScheduler {
     private io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler globalRegionScheduler;
 
     @ApiStatus.Internal
-    public GlobalRegionScheduler() {
+    GlobalRegionScheduler() {
         if (FoliaScheduler.isFolia()) {
             globalRegionScheduler = Bukkit.getGlobalRegionScheduler();
         } else {

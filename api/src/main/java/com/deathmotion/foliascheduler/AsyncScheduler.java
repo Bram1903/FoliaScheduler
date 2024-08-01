@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.deathmotion.foliascheduler.schedulers;
+package com.deathmotion.foliascheduler;
 
 import com.deathmotion.foliascheduler.FoliaScheduler;
 import com.deathmotion.foliascheduler.utils.TaskWrapper;
@@ -44,7 +44,7 @@ public class AsyncScheduler {
     private io.papermc.paper.threadedregions.scheduler.AsyncScheduler asyncScheduler;
 
     @ApiStatus.Internal()
-    public AsyncScheduler() {
+    AsyncScheduler() {
         if (FoliaScheduler.isFolia()) {
             asyncScheduler = Bukkit.getAsyncScheduler();
         } else {

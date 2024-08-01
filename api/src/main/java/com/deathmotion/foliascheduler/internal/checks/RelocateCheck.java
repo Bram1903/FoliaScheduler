@@ -24,6 +24,8 @@
 
 package com.deathmotion.foliascheduler.internal.checks;
 
+import org.jetbrains.annotations.ApiStatus;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -47,6 +49,7 @@ import java.util.Objects;
  * should be present in the resources directory.
  * </p>
  */
+@ApiStatus.Internal
 public class RelocateCheck {
 
     static {

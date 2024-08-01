@@ -6,9 +6,9 @@ plugins {
 }
 
 dependencies {
+    api(libs.jetbrains.annotations)
     compileOnly(libs.paper)
-    compileOnlyApi(libs.jetbrains.annotations)
-    compileOnlyApi(libs.lombok)
+    compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
 }
 
@@ -32,6 +32,9 @@ tasks {
     shadowJar {
         archiveFileName = "${rootProject.name}-${rootProject.ext["versionNoHash"]}.jar"
         archiveClassifier = null
+
+        relocate("org.jetbrains.annotations", "com.deathmotion.foliascheduler.shaded.jetbrains.annotations")
+        relocate("org.intellij.lang.annotations", "com.deathmotion.foliascheduler.shaded.intellij.annotations")
 
         mergeServiceFiles()
     }

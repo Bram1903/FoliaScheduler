@@ -22,13 +22,14 @@
  * SOFTWARE.
  */
 
-package com.deathmotion.foliascheduler.internal.schedulers;
+package com.deathmotion.foliascheduler.schedulers;
 
 import com.deathmotion.foliascheduler.FoliaScheduler;
 import com.deathmotion.foliascheduler.utils.TaskWrapper;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.TimeUnit;
@@ -42,6 +43,7 @@ public class AsyncScheduler {
     private BukkitScheduler bukkitScheduler;
     private io.papermc.paper.threadedregions.scheduler.AsyncScheduler asyncScheduler;
 
+    @ApiStatus.Internal()
     public AsyncScheduler() {
         if (FoliaScheduler.isFolia()) {
             asyncScheduler = Bukkit.getAsyncScheduler();

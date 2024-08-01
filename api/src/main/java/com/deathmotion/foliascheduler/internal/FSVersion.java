@@ -24,6 +24,7 @@
 
 package com.deathmotion.foliascheduler.internal;
 
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,6 +37,7 @@ import java.util.Objects;
  * Generally a snapshot version is published before the release version,
  * and thus, is considered "older" than the release version.
  */
+@ApiStatus.Internal
 public class FSVersion implements Comparable<FSVersion> {
 
     private final int major;

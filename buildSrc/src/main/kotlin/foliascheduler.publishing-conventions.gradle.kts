@@ -44,7 +44,7 @@ signing {
     val signingKeyId = System.getenv("SIGNING_KEY_ID")
     val signingKey = System.getenv("SIGNING_KEY")
     val signingPassword = System.getenv("SIGNING_PASSWORD")
-    useInMemoryPgpKeys(signingKeyId, signingKey.chunked(64).joinToString("\n"), signingPassword)
+    useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
     sign(publishing.publications)
 }
 

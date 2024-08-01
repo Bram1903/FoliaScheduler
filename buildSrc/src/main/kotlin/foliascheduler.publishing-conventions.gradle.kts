@@ -4,6 +4,17 @@ plugins {
 }
 
 publishing {
+    repositories {
+        maven {
+            name = "OSSRH"
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
+
     publications {
         create<MavenPublication>("FoliaScheduler") {
             groupId = project.group as String
@@ -12,14 +23,26 @@ publishing {
             from(components["java"])
 
             pom {
-                name = rootProject.name
-                description = rootProject.description
+                name = "FoliaScheduler"
+                description = "A simple to use scheduler, which allows scheduling task on both Bukkit and Folia."
                 url = "https://github.com/Bram1903/FoliaScheduler"
-
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "https://github.com/Bram1903/FoliaScheduler/blob/main/LICENSE"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "bram"
+                        name = "Bram"
+                        email = "bram@bramdekker.com"
+                    }
+                }
                 scm {
                     connection = "scm:git:https://github.com/Bram1903/FoliaScheduler.git"
                     developerConnection = "scm:git:https://github.com/Bram1903/FoliaScheduler.git"
-                    url = "https://github.com/Bram1903/FoliaScheduler"
+                    url = "https://github.com/Bram1903/FoliaScheduler/tree/main"
                 }
             }
         }

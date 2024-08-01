@@ -1,7 +1,7 @@
 import java.io.ByteArrayOutputStream
 
 val fullVersion = "1.0.0"
-val snapshot = true
+val snapshot = false
 
 group = "com.deathmotion.foliascheduler"
 description = rootProject.name

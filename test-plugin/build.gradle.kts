@@ -9,7 +9,7 @@ repositories {
 
 dependencies {
     compileOnly(libs.paper)
-    implementation(project(":api"))
+    implementation(libs.foliascheduler)
 }
 
 tasks {

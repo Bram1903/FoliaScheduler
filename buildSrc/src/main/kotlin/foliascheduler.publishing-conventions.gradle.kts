@@ -8,8 +8,8 @@ plugins {
 publishing {
     publications {
         create<MavenPublication>("FoliaScheduler") {
-            groupId = project.group as String
-            artifactId = project.name
+            groupId = "com.deathmotion"
+            artifactId = rootProject.name
             version = rootProject.ext["versionNoHash"] as String
             from(components["java"])
 
@@ -41,6 +41,9 @@ publishing {
 }
 
 signing {
+    setRequired({
+        gradle.taskGraph.hasTask("publishAllPublicationsToCentralPortal")
+    })
     useGpgCmd()
     sign(publishing.publications)
 }

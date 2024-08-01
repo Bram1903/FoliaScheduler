@@ -24,8 +24,8 @@
 
 package com.deathmotion.testfoliascheduler.tests;
 
+import com.deathmotion.foliascheduler.EntityScheduler;
 import com.deathmotion.foliascheduler.FoliaScheduler;
-import com.deathmotion.foliascheduler.schedulers.EntityScheduler;
 import com.deathmotion.foliascheduler.utils.TaskWrapper;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

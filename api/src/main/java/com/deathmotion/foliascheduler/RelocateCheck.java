@@ -22,9 +22,7 @@
  * SOFTWARE.
  */
 
-package com.deathmotion.foliascheduler.internal.checks;
-
-import org.jetbrains.annotations.ApiStatus;
+package com.deathmotion.foliascheduler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -49,10 +47,9 @@ import java.util.Objects;
  * should be present in the resources directory.
  * </p>
  */
-@ApiStatus.Internal
-public class RelocateCheck {
+class RelocateCheck {
 
-    static {
+    RelocateCheck() {
         check();
     }
 

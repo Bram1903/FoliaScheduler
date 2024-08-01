@@ -9,8 +9,8 @@ repositories {
 
 dependencies {
     compileOnly(libs.paper)
-    implementation(libs.foliascheduler)
-    //implementation(project(":api")) // For local testing
+    //implementation(libs.foliascheduler)
+    implementation(project(":api")) // For local testing
 }
 
 tasks {

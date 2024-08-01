@@ -26,7 +26,6 @@ package com.deathmotion.foliascheduler;
 
 import com.deathmotion.foliascheduler.internal.FSVersion;
 import com.deathmotion.foliascheduler.internal.FSVersions;
-import com.deathmotion.foliascheduler.internal.checks.RelocateCheck;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;

@@ -21,7 +21,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Publish package
-        run: ./gradlew publish
+        run: ./gradlew publishAllPublicationsToCentralPortal
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}

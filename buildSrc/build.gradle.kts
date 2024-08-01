@@ -4,7 +4,7 @@ plugins {
 
 kotlin {
     compilerOptions {
-        jvmToolchain(8)
+        jvmToolchain(21)
     }
 }
 
@@ -15,4 +15,5 @@ repositories {
 
 dependencies {
     implementation(libs.shadow)
+    implementation(libs.nmcp)
 }

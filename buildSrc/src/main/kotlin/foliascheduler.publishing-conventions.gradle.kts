@@ -1,20 +1,10 @@
 plugins {
     `java-library`
     `maven-publish`
+    com.gradleup.nmcp
 }
 
 publishing {
-    repositories {
-        maven {
-            name = "OSSRH"
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
-            }
-        }
-    }
-
     publications {
         create<MavenPublication>("FoliaScheduler") {
             groupId = project.group as String
@@ -46,6 +36,14 @@ publishing {
                 }
             }
         }
+    }
+}
+
+nmcp {
+    publish("FoliaScheduler") {
+        username = System.getenv("MAVEN_USERNAME")
+        password = System.getenv("MAVEN_PASSWORD")
+        publicationType = "USER_MANAGED"
     }
 }
 

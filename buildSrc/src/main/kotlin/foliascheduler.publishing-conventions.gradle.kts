@@ -41,18 +41,14 @@ publishing {
 }
 
 signing {
-    useInMemoryPgpKeys(
-        System.getenv("SIGNING_KEY_ID"),
-        System.getenv("SIGNING_KEY"),
-        System.getenv("SIGNING_PASSWORD"),
-    )
+    useGpgCmd()
     sign(publishing.publications)
 }
 
 nmcp {
     publish("FoliaScheduler") {
-        username = System.getenv("MAVEN_USERNAME")
-        password = System.getenv("MAVEN_PASSWORD")
+        username = properties["MAVEN_USERNAME"] as String
+        password = properties["MAVEN_PASSWORD"] as String
         publicationType = "USER_MANAGED"
     }
 }

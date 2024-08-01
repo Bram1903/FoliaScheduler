@@ -20,6 +20,15 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_SIGNING_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: List keys
+        run: gpg -K
+
       - name: Publish package
         run: ./gradlew publishAllPublicationsToCentralPortal
         env:

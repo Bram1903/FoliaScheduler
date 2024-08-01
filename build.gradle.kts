@@ -1,6 +1,6 @@
 import java.io.ByteArrayOutputStream
 
-val fullVersion = "1.0.0"
+val fullVersion = "1.0.1"
 val snapshot = false
 
 group = "com.deathmotion.foliascheduler"

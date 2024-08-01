@@ -41,18 +41,17 @@ publishing {
 }
 
 signing {
-    setRequired({
-        gradle.taskGraph.hasTask("publishAllPublicationsToCentralPortal")
-    })
     useGpgCmd()
     sign(publishing.publications)
 }
 
 nmcp {
-    publish("FoliaScheduler") {
-        username = properties["MAVEN_USERNAME"] as String
-        password = properties["MAVEN_PASSWORD"] as String
-        publicationType = "USER_MANAGED"
+    if (System.getenv("CI") == null) {
+        publish("FoliaScheduler") {
+            username = properties["MAVEN_USERNAME"] as String
+            password = properties["MAVEN_PASSWORD"] as String
+            publicationType = "USER_MANAGED"
+        }
     }
 }
 
